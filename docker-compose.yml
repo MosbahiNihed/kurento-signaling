@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  signaling-server:
+    build: ./
+    container_name: signaling_server
+    ports:
+      - 3000:3000
+    depends_on:
+      - media_server
+    environment:
+      - KURENTO_URI=ws://media-server:8888/kurento
+    network_mode: host 
+  media_server:
+    image: kurento/kurento-media-server:6.18.0
+    restart: always
+    container_name: media_server
+    ports:
+      - 8888:8888
+    network_mode: host    
+
+    
+
+
+    
