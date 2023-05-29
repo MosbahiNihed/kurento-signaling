@@ -5,6 +5,7 @@ const app = express();
 var http = require('http').Server(app);
 var kurento = require('kurento-client');
 var minimist = require('minimist');
+require('dotenv').config
 
 
 var socketServer = require('http').createServer(app);
@@ -52,8 +53,10 @@ var iceCandidateQueues = {};
 // constants
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: 'http://localhost:3000/',
-        ws_uri: 'ws://localhost:8888/kurento'
+        // as_uri: "http://localhost:3000",
+        // ws_uri:"wss://localhost:8888/kurento"
+        as_uri: process.env.AS_URI,
+        ws_uri: process.env.WS_URI || "ws://localhost:8888/kurento"
     }
 });
 // express routing

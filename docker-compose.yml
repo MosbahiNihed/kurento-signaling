@@ -8,7 +8,7 @@ services:
     depends_on:
       - media_server
     environment:
-      - KURENTO_URI=ws://media-server:8888/kurento
+      - WS_URI=ws://localhost:8888/kurento
     network_mode: host 
   media_server:
     image: kurento/kurento-media-server:6.18.0
